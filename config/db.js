@@ -8,6 +8,21 @@ const pool = new Pool({
   }
 });
 
+pool.connect(err => {
+    if (err) {
+      console.error('connection error', err.stack);
+    } else {
+      console.log('connected to database');
+    }
+  });
+
+  process.on('SIGINT', () => {
+    pool.end().then(() => {
+      console.log('Pool has ended');
+      process.exit(0);
+    });
+  });  
+
 module.exports = {
   query: (text, params) => pool.query(text, params),
 };
