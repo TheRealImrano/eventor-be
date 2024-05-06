@@ -9,6 +9,7 @@ CREATE TABLE users (
     username VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
+    contact_number VARCHAR(15) NOT NULL,  -- Making contact number mandatory
     is_organizer BOOLEAN NOT NULL
 );
 
@@ -31,9 +32,9 @@ CREATE TABLE registrations (
 );
 
 -- Example seeding for users
-INSERT INTO users (username, password, email, is_organizer) VALUES
-('john_doe', 'securepassword', 'john@example.com', true),
-('jane_smith', 'anothersecurepassword', 'jane@example.com', false);
+INSERT INTO users (username, password, email, contact_number, is_organizer) VALUES
+('john_doe', 'securepassword', 'john@example.com', '123-456-7890', true),
+('jane_smith', 'anothersecurepassword', 'jane@example.com', '098-765-4321', false);
 
 -- Example seeding for events
 INSERT INTO events (event_name, event_description, event_location, event_date, event_duration, is_private) VALUES
